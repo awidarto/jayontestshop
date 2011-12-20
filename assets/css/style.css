@@ -1,4 +1,4 @@
-body{padding:0px;background: url('../images/header.jpg') no-repeat 0 0;background-color:white;color:#231e18;background-repeat:no-repeat;margin:0;font-family:'Droid Sans', Arial, 'Trebuchet Ms', 'Yanone Kaffeesatz', Lato, Lobster, 'Lobster Two';font-size:12px;}
+body{padding:0px;background-color:white;color:#231e18;background-repeat:no-repeat;margin:0;font-family:'Trebuchet Ms', 'Yanone Kaffeesatz', Lato, Lobster, 'Lobster Two';font-size:12px;}
 #container{width:98%;margin:0px auto;padding:10px 20px;}
 #header{width:100%;margin:0;padding:0;}
 #logo{width:1000px;margin:0 auto;color:#231e18;height:220px;}
@@ -13,11 +13,12 @@ ul#navigation li a.selected{color:#231e18;background:white;font-size:18px;float:
 
 #identity{font-weight:bold;text-align:right;padding:10px 10px;}
 
-p{margin-left:40px;}
+p{margin-left:40px;margin-top:5px;margin-bottom:5px;}
+h2{margin-left:40px;}
 
 input.clean{padding:4px;border:1px solid #231e18;}
 
-table{width:100%;text-align:left;margin:20px 0;}
+table{width:100%;text-align:left;margin:20px 0;font-size:12px;margin-left:40px;}
 table tr.alt{background:#ECECEC;}
 table thead tr{background:#EEE;}
 a{color:#231e18;margin-right:10px;}
