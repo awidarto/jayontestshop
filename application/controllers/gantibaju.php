@@ -10,7 +10,7 @@ class Gantibaju extends CI_Controller {
 	public function index($appkey = null,$trxid = null){
 		$this->load->library('curl');
 		
-		$url = 'http://localhost/jayonadmin/api/v1/add/'.$appkey.'/'.$trxid;
+		$url = $this->config->item('api_url').'add/'.$appkey.'/'.$trxid;
 		
 		$trx = array(
 			'shipping_address'=>'Kompleks DKI D3 Joglo',
@@ -69,7 +69,7 @@ class Gantibaju extends CI_Controller {
 
 		//$this->db->insert('transactions',array('trx_id'=>$trx_id));
 
-		$url = 'http://localhost/jayonadmin/api/v1/post/'.$api_key.'/'.$trx_id;
+		$url = $this->config->item('api_url').'post/'.$api_key.'/'.$trx_id;
 		
 		$trx = array(
 			'api_key'=>$api_key,
@@ -121,7 +121,7 @@ class Gantibaju extends CI_Controller {
 		
 		$this->db->insert('transactions',array('trx_id'=>$trx_id));
 		
-		$data['checkoutlink'] = anchor_popup('http://localhost/jayonmember/buy/trx/'.$this->api_key.'/'.$trx_id,'COD by Jayon');
+		$data['checkoutlink'] = anchor_popup($this->config->item('member_url').'buy/trx/'.$this->api_key.'/'.$trx_id,'COD by Jayon');
 
 		$this->load->view('shoppingtest',$data);
 		

@@ -80,7 +80,7 @@ $autoload['helper'] = array('asset','date','url','form');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('syscon');
 
 
 /*
