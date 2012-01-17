@@ -1,22 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Gantibaju extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	
 	function __construct(){
 		parent::__construct();
@@ -70,7 +54,7 @@ class Gantibaju extends CI_Controller {
 			for this example only :
 			trx_id is a string of 16 digit randomly generated numbers
 			transactions table is a table containing generated trx_id only, transaction detail is fixed and hardcoded below
-		$trx_id = random_string('numeric',16);
+			$trx_id = random_string('numeric',16);
 		*/
 		
 		$trx_id = $this->input->post('trx_id');

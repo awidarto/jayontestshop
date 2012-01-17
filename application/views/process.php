@@ -1,6 +1,4 @@
-<?php
-	//print_r($trx_detail);
-?>
+
 <link rel="stylesheet" type="text/css" href="<?php print base_url();?>assets/css/style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="<?php print base_url();?>assets/css/jquery-ui/flick/jquery-ui-1.8.16.custom.css" media="screen" />
 
@@ -49,7 +47,7 @@
 		  url: '<?php print site_url('gantibaju/ajaxpost/'.$api_key);?>',
 		  data: data,
 		  success: function(data){
-				alert(data);
+				alert(data.status);
 			},
 		  dataType: 'json'
 		});
