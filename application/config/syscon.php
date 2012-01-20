@@ -12,6 +12,6 @@
 * System Constants for Jayon Test Site.
 */
 
-$config['api_url'] = 'http://www.jayonexpress.com/jayonadmin/api/v1/';
-$config['member_url'] = 'http://www.jayonexpress.com/member/';
+$config['api_url'] = 'http://localhost/jayonadmin/api/v1/';
+$config['member_url'] = 'http://localhost/jayonmember/';
 ?>

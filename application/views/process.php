@@ -64,7 +64,9 @@
 
 <h2>Delivery Order</h2>
 
-<p>Please specify your intended delivery zone and delivery time, and maybe modify your shipping address as well.</p>
+<p>Please specify your intended delivery zone and delivery time, and maybe modify your shipping address as well.<br />
+Order will be processed within 3(three) working days.
+</p>
 
 <table border="0" cellpadding="4" cellspacing="0" id="mainInfo">
 <tbody>
@@ -75,16 +77,26 @@
 		<?php echo form_dropdown('buyerdeliveryzone',$this->config->item('zones'),null,'id="buyerdeliveryzone"')?><br /><br />
 	</td>
 </tr>
-<tr>
-	<td>Delivery Date & Time:</td>
-	<td>
-		<input type="text" name="buyerdeliverytime" id="buyerdeliverytime" value="" size="50" class="form" /><br /><br />
-	</td>
-</tr>
+<?php
+/*
+	<tr>
+		<td>Delivery Date & Time:</td>
+		<td>
+			<input type="text" name="buyerdeliverytime" id="buyerdeliverytime" value="" size="50" class="form" /><br /><br />
+		</td>
+	</tr>
+*/
+?>
 <tr>
 	<td>Delivery Address:</td>
 	<td>
 		<textarea name="shipping_address" id="shipping_address" cols="60" rows="10"></textarea>	
+	</td>
+</tr>
+<tr>
+	<td>Directions<br />( Please tell us how to get there ):</td>
+	<td>
+		<textarea name="directions" id="directions" cols="60" rows="10"></textarea>	
 	</td>
 </tr>
 <tr>

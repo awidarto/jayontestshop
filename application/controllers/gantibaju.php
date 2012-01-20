@@ -63,7 +63,8 @@ class Gantibaju extends CI_Controller {
 		$shipping_address = $this->input->post('shipping_address');
 		$email = $this->input->post('email');
 		$buyerdeliveryzone = $this->input->post('buyerdeliveryzone');
-		$buyerdeliverytime = $this->input->post('buyerdeliverytime');
+		//$buyerdeliverytime = $this->input->post('buyerdeliverytime');
+		$buyerdeliverytime = '-';
 		$phone = $this->input->post('phone');
 		$status = $this->input->post('status');
 
