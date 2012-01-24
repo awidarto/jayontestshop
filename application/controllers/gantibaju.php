@@ -63,6 +63,7 @@ class Gantibaju extends CI_Controller {
 		$shipping_address = $this->input->post('shipping_address');
 		$email = $this->input->post('email');
 		$buyerdeliveryzone = $this->input->post('buyerdeliveryzone');
+		$directions = $this->input->post('directions');
 		//$buyerdeliverytime = $this->input->post('buyerdeliverytime');
 		$buyerdeliverytime = '-';
 		$phone = $this->input->post('phone');
@@ -80,6 +81,7 @@ class Gantibaju extends CI_Controller {
 			'shipping_address'=>$shipping_address,
 			'buyerdeliveryzone'=>$buyerdeliveryzone,
 			'buyerdeliverytime'=>$buyerdeliverytime,
+			'directions'=>$directions,
 			'email'=>$email,
 			'phone' => $phone,
 			'cod_cost' => '0', 		// cod_cost 0 if absorbed in price of goods sold, otherwise specify the amount here

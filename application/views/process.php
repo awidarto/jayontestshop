@@ -35,6 +35,7 @@
 			buyerdeliveryzone:$('#buyerdeliveryzone option:selected').val(),
 			buyerdeliverytime:$('#buyerdeliverytime').val(),
 			shipping_address:$('#shipping_address').val(),
+			directions:$('#directions').val(),
 			buyer_name:$('#buyer_name').val(),
 			recipient_name:$('#recipient_name').val(),
 			phone:$('#phone').val(),
