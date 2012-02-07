@@ -140,7 +140,7 @@ Order will be processed within 3(three) working days.
 <tr>
 	<td>&nbsp;</td>
 	<td>
-		<input type="button" value="Confirm Order" name="confirm" onClick="javascript:ajaxpost('confirm');" />
+		<input type="button" value="Confirm Order" name="confirm" onClick="javascript:ajaxpost('pending');" />
 		<input type="button" value="Cancel Order" name="cancel" onClick="javascript:ajaxpost('cancel');" />
 	</td>
 </tr>

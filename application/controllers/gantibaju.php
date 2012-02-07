@@ -92,7 +92,7 @@ class Gantibaju extends CI_Controller {
 			'phone' => $phone,
 			'cod_cost' => '0', 		// cod_cost 0 if absorbed in price of goods sold, otherwise specify the amount here
 			'currency' => 'IDR', 	// currency in 3 digit codes
-			'status'=>$status, 	// status can be : incoming or confirm, depending on merchant's workflow
+			'status'=>$status, 	// status can be : pending or confirm, depending on merchant's workflow
 			'trx_detail'=>array(
 				array(
 					'unit_description'=>'kaos oblong swan',
