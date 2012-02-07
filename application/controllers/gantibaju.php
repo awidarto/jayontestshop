@@ -11,7 +11,7 @@ class Gantibaju extends CI_Controller {
 		$this->load->library('curl');
 		
 		$url = $this->config->item('api_url').'add/'.$appkey.'/'.$trxid;
-		
+
 		$trx = array(
 			'shipping_address'=>'Kompleks DKI D3 Joglo',
 			'phone' => '02112345678',
@@ -62,10 +62,14 @@ class Gantibaju extends CI_Controller {
 		$recipient_name = $this->input->post('recipient_name');
 		$shipping_address = $this->input->post('shipping_address');
 		$email = $this->input->post('email');
-		$buyerdeliveryzone = $this->input->post('buyerdeliveryzone');
+
+		$zone = $this->input->post('buyerdeliveryzone');
+		$zone = explode(',', $zone);
+
+		$buyerdeliveryzone = $zone[0];
+		$buyerdeliverycity = $zone[1];
 		$directions = $this->input->post('directions');
-		//$buyerdeliverytime = $this->input->post('buyerdeliverytime');
-		$buyerdeliverytime = '-';
+		$buyerdeliverytime = $this->input->post('buyerdeliverytime');
 		$phone = $this->input->post('phone');
 		$status = $this->input->post('status');
 
@@ -80,8 +84,10 @@ class Gantibaju extends CI_Controller {
 			'recipient_name'=>$recipient_name,
 			'shipping_address'=>$shipping_address,
 			'buyerdeliveryzone'=>$buyerdeliveryzone,
+			'buyerdeliverycity'=>$buyerdeliverycity,
 			'buyerdeliverytime'=>$buyerdeliverytime,
 			'directions'=>$directions,
+			'auto_confirm'=>false,
 			'email'=>$email,
 			'phone' => $phone,
 			'cod_cost' => '0', 		// cod_cost 0 if absorbed in price of goods sold, otherwise specify the amount here
@@ -113,6 +119,8 @@ class Gantibaju extends CI_Controller {
 		);
 		
 		$result = $this->curl->simple_post($url,array('transaction_detail'=>json_encode($trx)));
+
+		file_put_contents('sample.json', json_encode($trx));
 		
 		print $result;
 	}	

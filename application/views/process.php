@@ -27,6 +27,15 @@
 	function toggleForm(){
 		$('#orderform').toggle();
 	}
+
+	function setcity(){
+		var city = $('#buyerdeliveryzone').val();
+
+		var c = city.split(',');
+
+		$('#buyerdeliverycitytxt').html(c[1]);
+		$('#buyerdeliverycity').val(c[1]);
+	}
 	
 	function ajaxpost(status){
 
@@ -75,19 +84,22 @@ Order will be processed within 3(three) working days.
 	<td>Delivery Zone:</td>
 	<td>
 		<input type="hidden" name="trx_id" id="trx_id" value="<?php echo $trx_id; ?>" size="50" class="form" /><br /><br />
-		<?php echo form_dropdown('buyerdeliveryzone',$this->config->item('zones'),null,'id="buyerdeliveryzone"')?><br /><br />
+		<?php echo form_dropdown('buyerdeliveryzone',$this->config->item('zonecity'),null,'id="buyerdeliveryzone" onChange="javascript:setcity();"')?><br /><br />
 	</td>
 </tr>
-<?php
-/*
-	<tr>
-		<td>Delivery Date & Time:</td>
-		<td>
-			<input type="text" name="buyerdeliverytime" id="buyerdeliverytime" value="" size="50" class="form" /><br /><br />
-		</td>
-	</tr>
-*/
-?>
+<tr>
+	<td>City:</td>
+	<td>
+		<input type="hidden" name="buyerdeliverycity" id="buyerdeliverycity" value="" size="50" >
+		<span id="buyerdeliverycitytxt"></span>
+	</td>
+</tr>
+<tr>
+	<td>Delivery Date & Time:</td>
+	<td>
+		<input type="text" name="buyerdeliverytime" id="buyerdeliverytime" value="" size="50" class="form" /><br /><br />
+	</td>
+</tr>
 <tr>
 	<td>Delivery Address:</td>
 	<td>
