@@ -62,6 +62,7 @@ class Gantibaju extends CI_Controller {
 		$recipient_name = $this->input->post('recipient_name');
 		$shipping_address = $this->input->post('shipping_address');
 		$email = $this->input->post('email');
+		$zip = $this->input->post('zip');
 
 		$zone = $this->input->post('buyerdeliveryzone');
 		$zone = explode(',', $zone);
@@ -89,6 +90,7 @@ class Gantibaju extends CI_Controller {
 			'directions'=>$directions,
 			'auto_confirm'=>false,
 			'email'=>$email,
+			'zip' => $zip,
 			'phone' => $phone,
 			'cod_cost' => '0', 		// cod_cost 0 if absorbed in price of goods sold, otherwise specify the amount here
 			'currency' => 'IDR', 	// currency in 3 digit codes
@@ -120,9 +122,11 @@ class Gantibaju extends CI_Controller {
 		
 		$result = $this->curl->simple_post($url,array('transaction_detail'=>json_encode($trx)));
 
-		file_put_contents('sample.json', json_encode($trx));
 		
 		print $result;
+
+		file_put_contents('post_result.txt', $result);
+		file_put_contents('sample.json', json_encode($trx));
 	}	
 	
 	public function plaincheckout(){
@@ -143,6 +147,7 @@ class Gantibaju extends CI_Controller {
 		
 		$this->load->config('zones');
 		$this->load->helper('form');
+		$this->load->library('curl');
 		
 
 		$trx_id = random_string('numeric',16);
@@ -152,6 +157,20 @@ class Gantibaju extends CI_Controller {
 		$data['trx_id'] = $trx_id;
 		
 		$data['api_key'] = $this->api_key;
+
+		$url = $this->config->item('api_url').'tsget/'.$this->api_key;
+
+		$dateblock = $this->curl->simple_post($url);
+
+		$dateblock = json_decode($dateblock);
+
+		$dateblock = $dateblock->timeslot;
+
+		$dateblock = json_encode($dateblock);
+
+		//$dateblock = str_replace("\\", "",$dateblock);
+
+		$data['dateblock'] = $dateblock;
 
 		$this->load->view('process',$data);
 	}

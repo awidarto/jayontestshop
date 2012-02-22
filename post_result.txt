@@ -1,0 +1,1 @@
+{"status":"OK:ORDERPOSTED","timestamp":1329913181,"delivery_id":"00000021-22-022012-0000000026","buyer_id":"48"}

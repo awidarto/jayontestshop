@@ -7,13 +7,27 @@
 <script type="text/javascript" src="<?php print base_url();?>assets/js/jquery-ui/jquery-ui-timepicker-addon.js"></script>
 
 <script>
+
+	var json_string = <?php print $dateblock;?>;
+	var dateBlock = eval("(" + json_string + ")");
+
 	$(document).ready(function() {
 		$( '#buyerdeliverytime' ).datetimepicker({
 			dateFormat:'yy-mm-dd',
 			showSecond: false,
 			timeFormat: 'hh:mm:ss',
 			stepHour: 2,
-			stepMinute: 30
+			stepMinute: 30,
+			onSelect:function(dateText, inst){
+				//console.log(dateBlock);
+				if(dateBlock[dateText] == 'weekend'){
+					alert('no delivery on weekend');
+				}else{
+					$('#assign_deliverytime').val(dateText);
+				}
+			},
+			beforeShowDay:getBlocking
+
 		});
 		
 		$( '#buyerdeliveryzone' ).autocomplete({
@@ -47,6 +61,7 @@
 			directions:$('#directions').val(),
 			buyer_name:$('#buyer_name').val(),
 			recipient_name:$('#recipient_name').val(),
+			zip:$('#zip').val(),
 			phone:$('#phone').val(),
 			email:$('#email').val(),
 			status:status
@@ -62,6 +77,52 @@
 		  dataType: 'json'
 		});
 	}
+
+	function getBlocking(d){
+		/*
+			$.datepicker.formatDate('yy-mm-dd', d);
+		*/
+		var curr_date = d.getDate();
+		var curr_month = d.getMonth() + 1; //months are zero based
+		var curr_year = d.getFullYear();
+	
+		curr_date = (curr_date < 10)?"0" + curr_date : curr_date;
+		curr_month = (curr_month < 10)?"0" + curr_month : curr_month;
+		var indate = curr_year + '-' + curr_month + '-' + curr_date;
+
+		var select = 1;
+		var css = 'open';
+		var popup = 'working day';
+		
+		//console.log(indate);
+		console.log(window.dateBlock);
+
+		//console.log(window.dateBlock[indate]);
+
+		if(window.dateBlock[indate] == 'weekend'){
+			select = 0;
+			css = 'weekend';
+			popup = 'weekend';
+		}else if(window.dateBlock[indate] == 'holiday'){
+			select = 0;
+			css = 'weekend';
+			popup = 'holiday';
+		}else if(window.dateBlock[indate] == 'blocked'){
+			select = 0;
+			css = 'blocked';
+			popup = 'zero time slot';
+		}else if(window.dateBlock[indate] == 'full'){
+			select = 0;
+			css = 'blocked';
+			popup = 'zero time slot';
+		}else{
+			select = 1;
+			css = '';
+			popup = 'working day';
+		}
+		return [select,css,popup];
+	}
+
 	
 </script>
 
@@ -104,6 +165,12 @@ Order will be processed within 3(three) working days.
 	<td>Delivery Address:</td>
 	<td>
 		<textarea name="shipping_address" id="shipping_address" cols="60" rows="10"></textarea>	
+	</td>
+</tr>
+<tr>
+	<td>ZIP / Postal Code:</td>
+	<td>
+		<input type="text" name="zip" id="zip" value="" size="50" class="form" /><br /><br />
 	</td>
 </tr>
 <tr>
