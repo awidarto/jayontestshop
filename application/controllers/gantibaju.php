@@ -125,8 +125,8 @@ class Gantibaju extends CI_Controller {
 		
 		print $result;
 
-		file_put_contents('post_result.txt', $result);
-		file_put_contents('sample.json', json_encode($trx));
+		//file_put_contents('post_result.txt', $result);
+		//file_put_contents('sample.json', json_encode($trx));
 	}	
 	
 	public function plaincheckout(){
