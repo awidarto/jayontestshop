@@ -92,10 +92,19 @@ class Gantibaju extends CI_Controller {
 			'email'=>$email,
 			'zip' => $zip,
 			'phone' => $phone,
-			'cod_cost' => '0', 		// cod_cost 0 if absorbed in price of goods sold, otherwise specify the amount here
-			'currency' => 'IDR', 	// currency in 3 digit codes
-			'status'=>$status, 	// status can be : pending or confirm, depending on merchant's workflow
-			'trx_detail'=>array(
+			'total_price'=>500000,
+			'total_discount'=>0,
+			'total_tax'=>0,
+			'chargeable_amount'=>500000,
+			'cod_cost' => '0', 		/* cod_cost 0 if absorbed in price of goods sold, otherwise specify the amount here*/
+			'currency' => 'IDR', 	/* currency in 3 digit codes*/
+			'status'=>$status, 	/* status can be : pending or confirm, depending on merchant's workflow */
+
+			/*
+				trx_detail should contain merchants transaction details for perticular session, below are just example
+			*/
+
+			'trx_detail'=>array( // 
 				array(
 					'unit_description'=>'kaos oblong swan',
 					'unit_price'=>3000,
@@ -108,6 +117,13 @@ class Gantibaju extends CI_Controller {
 					'unit_price'=>35000,
 					'unit_quantity'=>2,
 					'unit_total'=>70000,
+					'unit_discount'=>0,
+				),
+				array(
+					'unit_description'=>'kaos polo biru',
+					'unit_price'=>135000,
+					'unit_quantity'=>5,
+					'unit_total'=>675000,
 					'unit_discount'=>0,
 				),
 				array(
