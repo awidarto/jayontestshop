@@ -4,7 +4,7 @@ class Gantibaju extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
-		$this->api_key = '2bf7ec5f0f3f1b5664f34e58bc7ea33cf6eb9860';
+		$this->api_key = 'd85cbf10a6e42a457b475cdea9ae58ab195cfe4f';
 	}
 	
 	public function index($appkey = null,$trxid = null){
@@ -93,8 +93,8 @@ class Gantibaju extends CI_Controller {
 			'zip' => $zip,
 			'phone' => $phone,
 			'total_price'=>500000,
-			'total_discount'=>0,
-			'total_tax'=>0,
+			'total_discount'=>20000,
+			'total_tax'=>'117.500',
 			'chargeable_amount'=>500000,
 			'cod_cost' => '0', 		/* cod_cost 0 if absorbed in price of goods sold, otherwise specify the amount here*/
 			'currency' => 'IDR', 	/* currency in 3 digit codes*/
